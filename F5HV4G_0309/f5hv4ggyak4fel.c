@@ -15,7 +15,7 @@ int main(void){
 	if( (pid = fork()) < 0)
 		perror("fork error");
 	else if(pid == 0){
-		if(execl("./child.out","child",(char*)NULL)<0)
+		if(execlp("./child.out","child",(char*)NULL)<0)
 			perror("execl error");
 	}
 
