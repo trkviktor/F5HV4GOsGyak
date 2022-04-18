@@ -92,6 +92,9 @@ void gcdCalc(int array[], int size)
 {
     int gcd;
 
+    FILE *fp;
+    fp = fopen ("gccResults.txt", "w");
+
     for (size_t i = 0; i < size; i+=2)
     {
         gcd = 0;
@@ -102,5 +105,8 @@ void gcdCalc(int array[], int size)
         }
 
         printf("\nG.C.D of %d and %d is %d", array[i], array[i+1], gcd);
+        fprintf(fp,"%d %d %d \n", array[i], array[i+1], gcd);
         }
+
+        fclose(fp);
 }
