@@ -36,18 +36,20 @@ int main(void)
         fp = fopen("numbers.txt", "r");
         fscanf(fp, "%d", buf);
         int nmbCnt = buf[0];
+        printf("Amount of numbers: %d \n\n",nmbCnt);
 
         for (size_t i = 0; i < nmbCnt; i++)
         {
             fscanf(fp, "%d", buf);
             if(num = write(fd, buf, sizeof(buf[0])) < 0)
                 perror("Child write error");
-            /* else
-                printf("Child wrote %d \n",buf[0]); */
+            else
+                printf("Child wrote %d \n",buf[0]);
         }
         
 
         close(fd);
+        printf("\nchild - closed \n");
         exit(0);
     }
     else
@@ -80,6 +82,7 @@ int main(void)
 
 
         read(fd, buf, sizeof(buf));
+        printf("\n\nparent - closed \n");
         close(fd);
         wait(0);
     }
@@ -93,7 +96,7 @@ void gcdCalc(int array[], int size)
     int gcd;
 
     FILE *fp;
-    fp = fopen ("gccResults.txt", "w");
+    fp = fopen ("gcdResults.txt", "w");
 
     for (size_t i = 0; i < size; i+=2)
     {
